@@ -14,6 +14,16 @@ class PostController extends Controller
      */
     public function index()
     {
-        echo "hello world";
+        $api_key = "9f55cb73434b94349a234d8e584962349ec951d";
+        $api_password = "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f345f24b";
+        $store_url = "megam34artone.myshopify.com";
+
+        $url = "https://{$api_key}:{$api_password}@{$store_url}/admin/api/2021-07/products.json";
+
+        $response = Http::get($url);
+    
+        $jsonData = $response->json();
+          
+        dd($jsonData);
     }
 }
