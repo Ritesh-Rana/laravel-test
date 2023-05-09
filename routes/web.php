@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\DemoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +17,8 @@ use App\Http\Controllers\PostController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts', [DemoController::class, 'index']);
+Route::get('/post', [PostController::class, 'index']);
 
 // Route::get('/posts', function (){
 //     echo "Hello";
