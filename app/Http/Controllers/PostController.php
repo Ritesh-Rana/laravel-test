@@ -79,4 +79,61 @@ class PostController extends Controller
       echo $e;
     }
   }
+  public function orderFulfilment()
+  {
+    $shopify = app(Shopify::class);
+    $params = [
+      'location_id'=>80874275106,
+      "status" => 1,
+      "shipment_status" => 1,
+      "tracking_number" => 1213123
+    ];
+
+    //full fill order by this method and pass required params
+    /*
+    $params = [
+        "id" => 4714436821281
+        "order_id" => 5293576814881
+        "status" => "success"
+        "created_at" => "2023-05-11T05:25:48-04:00"
+        "service" => "manual"
+        "updated_at" => "2023-05-11T05:25:48-04:00"
+        "tracking_company" => null
+        "shipment_status" => null
+        "location_id" => 80874275105
+        "origin_address" => null
+        "line_items" => array:1 [▶]
+        "tracking_number" => null
+        "tracking_numbers" => []
+        "tracking_url" => null
+        "tracking_urls" => []
+        "receipt" => []
+        "name" => "#1001.1"
+        "admin_graphql_api_id" => "gid://shopify/Fulfillment/4714436821281"
+      ]
+    */
+    // $o = $shopify->createOrderFulfillment(5293576814881, $params);
+    // dd($o);
+
+    // get counts
+    // $o = $shopify->getOrderFulfillmentsCount(5293576814881, $params);
+    // dd($o);
+    
+    // get details of order fulfil and fulfilment id
+    $o = $shopify->getOrderFulfillments(5293576814881,[]);
+    dd($o);
+
+    // update order fulfil
+    // $o = $shopify->updateOrderFulfillment(5293576814881,4714436821281,$params );
+    // dd($o);
+    
+
+    //  $o = $shopify->cancelOrderFulfillment(5293576814881,4714436821281 );
+    //  dd($o);
+
+    //  $o = $shopify->getAssignedFulfillmentOrders('cancellation_requested',[80874275105] );
+    //  dd($o);
+
+
+  }
 }
