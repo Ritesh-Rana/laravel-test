@@ -24,4 +24,5 @@ Route::get('/updateproduct/{id}', [PostController::class,'updateProduct']);
 Route::get('/updatemeta/{id}', [PostController::class,'updateMetafield']);
 Route::get('/getmeta/{id}', [PostController::class,'getProductMetafields']);
 Route::get('/orderfulfilment/{id}', [PostController::class,'orderFulfilment']);
+Route::get('/getblogs', [PostController::class,'getBlogs']);
 
