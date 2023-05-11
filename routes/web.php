@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\DemoController;
+use App\Http\Controllers\UpdateProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +18,9 @@ use App\Http\Controllers\DemoController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/posts', [DemoController::class, 'index']);
-Route::get('/post', [PostController::class, 'index']);
+Route::get('/products', [PostController::class, 'index']);
+Route::get('/orders', [PostController::class, 'getOrders']);
+Route::get('/updateproduct/{id}', [PostController::class,'updateProduct']);
+Route::get('/updatemeta/{id}', [PostController::class,'updateMetafield']);
+Route::get('/getmeta/{id}', [PostController::class,'getProductMetafields']);
 
-// Route::get('/posts', function (){
-//     echo "Hello";
-// });
