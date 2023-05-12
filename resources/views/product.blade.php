@@ -1,9 +1,4 @@
 <?php
-use Signifly\Shopify\Shopify;
-
-    $shopify = app(Shopify::class);
-    $product = $shopify->getProducts();
-    $product = json_decode($product);
 
     $html = "<table style='border: 1px solid black;'>
         <thead>

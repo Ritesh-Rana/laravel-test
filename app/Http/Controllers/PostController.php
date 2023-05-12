@@ -15,16 +15,28 @@ class PostController extends Controller
    */
   public function index()
   {
-    return view('product');
+    try{
+    $shopify = app(Shopify::class);
+    $product = $shopify->getProducts();
+    $product = json_decode($product);
+    return view('product', compact('product'));
+    }
+    catch(Exception $e){
+      $msg = "Can't get Product"; 
+      return view('product', compact('msg'));
+    }
   }
+
   public function getOrders()
   {
     try {
       $shopify = app(Shopify::class);
       $orders = $shopify->getOrders();
-      dd($orders);
+      $orders =json_decode($orders);
+      return view('orders', compact('orders'));
     } catch (Exception $e) {
-      echo $e;
+      $msg = "Can't Get Orders";
+      return view('orders', compact('e', 'msg'));
     }
   }
   public function updateProduct($id)
