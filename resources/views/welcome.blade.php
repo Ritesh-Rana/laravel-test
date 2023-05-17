@@ -454,7 +454,7 @@
         }
 
         .min-h-screen {
-            min-height: 100vh
+            min-height: 50vh
         }
 
         .w-auto {
@@ -823,9 +823,18 @@
                 padding: 2rem
             }
         }
+        .text-white{
+            color: red;
+            gap: 30px;
+            text-decoration: underline overline;
+        }
     </style>
 </head>
 <body class="antialiased">
+    <div class="relative sm:flex sm:justify-center sm:items-center bg-dots-darker text-white">
+        <a href="/products" class="text-white">View all Products</a>
+        <a href="/orders" class="text-white">View all Orders</a>
+    </div>
     <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             <div class="h-100 d-flex align-items-center justify-content-center">
                 <h1 class="antialiased">
