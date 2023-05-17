@@ -7,7 +7,7 @@ return [
         /*
          * The API access token from the private app.
          */
-        'access_token' => env('SHOPIFY_ACCESS_TOKEN', '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'),
+        'access_token' => env('SHOPIFY_ACCESS_TOKEN', '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'),
 
         /*
          * The shopify domain for your shop.
