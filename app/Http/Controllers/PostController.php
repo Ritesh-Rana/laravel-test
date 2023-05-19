@@ -8,21 +8,21 @@ use Signifly\Shopify\Shopify;
 
 class PostController extends Controller
 {
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
+  protected $shopify;
+
+  public function __construct(Shopify $shopify)
+  {
+    $this->shopify = $shopify;
+  }
   public function index()
   {
-    try{
-    $shopify = app(Shopify::class);
-    $product = $shopify->getProducts();
-    $product = json_decode($product);
-    return view('product', compact('product'));
-    }
-    catch(Exception $e){
-      $msg = "Can't get Product"; 
+    try {
+      $shopify = $this->shopify;
+      $product = $this->shopify->getProducts();
+      $product = json_decode($product);
+      return view('product', compact('product'));
+    } catch (Exception $e) {
+      $msg = "Can't get Product";
       return view('product', compact('msg'));
     }
   }
@@ -30,9 +30,9 @@ class PostController extends Controller
   public function getOrders()
   {
     try {
-      $shopify = app(Shopify::class);
+      $shopify = $this->shopify;
       $orders = $shopify->getOrders();
-      $orders =json_decode($orders);
+      $orders = json_decode($orders);
       return view('orders', compact('orders'));
     } catch (Exception $e) {
       $msg = "Can't Get Orders";
@@ -42,9 +42,10 @@ class PostController extends Controller
   public function updateProduct($id)
   {
     try {
-      $shopify = app(Shopify::class);
+  $shopify=$this->shopify;
       $fields = [
-        'title' => 'test tv updated from laravel'
+        'title' => 'Demo product',
+        'price' => 20
       ];
       $response = $shopify->updateProduct((int)$id, $fields);
       echo "Product Updated Successfully with product id " . $id;
@@ -55,7 +56,7 @@ class PostController extends Controller
   public function updateMetafield($id)
   {
     try {
-      $shopify = app(Shopify::class);
+  $shopify=$this->shopify;
       $data = ['value' => 'India to updated from laravel'];
       dd($shopify->updateMetafield($id, $data));
     } catch (Exception $e) {
@@ -65,7 +66,7 @@ class PostController extends Controller
   public function getProductMetafields($id)
   {
     try {
-      $shopify = app(Shopify::class);
+  $shopify=$this->shopify;
       $data = [];
       dd($shopify->getProductMetafields($id, $data));
     } catch (Exception $e) {
@@ -75,7 +76,7 @@ class PostController extends Controller
   public function orderFulfilment()
   {
     try {
-      $shopify = app(Shopify::class);
+  $shopify=$this->shopify;
       $params = [
         'location_id' => 80874275106,
         "status" => 1,
@@ -134,7 +135,7 @@ class PostController extends Controller
   public function getBlogs()
   {
     try {
-      $shopify = app(Shopify::class);
+  $shopify=$this->shopify;
 
       // get all blogs
       // $blogs=$shopify->getBlogs([]);
